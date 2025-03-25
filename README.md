@@ -22,7 +22,26 @@ For a Push-To-Talk, the switch needs normally be closed to mute the audio. Press
 
 I start by recreating the schematic for the Shure mute switch in [KiCad](https://www.kicad.org).
 
-There is one additional resistor to add, R3. This will drop down the +5V DC bias voltage within the voltage range for the Knowles microphone.
+There is one additional resistor to add. The microphone runs at 1.5V - 3.6V. We need to drop the voltage down.
+
+![bodypack input](img/bodypack.jpg)
+
+
+|           |           |             |            |         |               |    |         |   |
+|-----------|-----------|-------------|------------|---------|---------------|----|---------|---|
+| Vin       | 5 V       |             |            |         |               |    |         |   |
+| Vmin      | 1.5 V     |             | R1         | 10000 Ω |               |    |         |   |
+| Vmax      | 3.6 V     |             | R2         | 8000 Ω  |               | R3 | 20000 Ω |   |
+| Idd@1.8 V | 0.000145A |             |            |         |               |    |         |   |
+|           |           |             |            |         |               |    |         |   |
+|           |           | Voltage Div |            |         | Current Limit |    |         |   |
+|           | RbodyPack | Vout        | Idiv       |         | Vout          |    |         |   |
+| ATXD      | 0         | 2.222 V     | 0.00027778 |         | 2.1 V         |    |         |   |
+| ULXD      | 1000 Ω    | 2.105 V     | 0.00026316 |         | 1.955 V       |    |         |   |
+| QLXD      | 1000 Ω    | 2.105 V     | 0.00026316 |         | 1.955 V       |    |         |   |
+| UHFR      | 500 Ω     | 2.162 V     | 0.00027027 |         | 2.0275 V      |    |         |   |
+
+Shure sells a few different lines of wirelesss systems. Each bodypack supplies the bias voltage slightly differently. Lets check if we can find a combination of resistors that works with all models. In Excel I try out regulating voltage for the microphone by using a voltage divider (R1, R2) and a current limiting resistor (R3).  A 20kΩ resistor is perfect, it is already in the mute portion of the circuit and brings drops the voltage into the 1.5V - 3.6V range
 
 
 ![mems mechanical](img/mems_mech.jpg)

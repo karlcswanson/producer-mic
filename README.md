@@ -1,4 +1,6 @@
 # producer-mic
+![mic picture](img/hero.jpg)
+
 This mic was created to work with Shure ULX-D and Axient Digital wireless systems. The venue was using a custom Countryman B3 mic wired into a PTT radio surveillance kit. While simple, this design was fragile, difficult to repair, and caused clicks when the mic was turned on and off.
 
 ## Circuit Design
@@ -56,3 +58,8 @@ For the microphone, we define the footprint by these layers:
 * Drill - Where holes will be drilled. These are often used to connect between layers of the PCB. For the microphone, it is used to create an acoustic port.
 
 ![component library](img/footprint.jpg)
+
+## PCB Layout
+## Fabrication
+
+## Physical Design

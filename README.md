@@ -20,9 +20,7 @@ For a Push-To-Talk, the switch needs normally be closed to mute the audio. Press
 ## Schematic
 ![schematic](img/schematic.jpg)
 
-I start by recreating the schematic for the Shure mute switch in [KiCad](https://www.kicad.org).
-
-There is one additional resistor to add. The microphone runs at 1.5V - 3.6V. We need to drop the voltage down.
+I start by recreating the schematic for the Shure mute switch in [KiCad](https://www.kicad.org). There is one additional resistor to add. The microphone runs at 1.5V - 3.6V. We need to drop the 5V DC bias from the body back to that range.
 
 ![bodypack input](img/bodypack.jpg)
 
@@ -41,7 +39,20 @@ There is one additional resistor to add. The microphone runs at 1.5V - 3.6V. We 
 | QLXD      | 1000 Ω    | 2.105 V     | 0.00026316 |         | 1.955 V       |    |         |   |
 | UHFR      | 500 Ω     | 2.162 V     | 0.00027027 |         | 2.0275 V      |    |         |   |
 
-Shure sells a few different lines of wirelesss systems. Each bodypack supplies the bias voltage slightly differently. Lets check if we can find a combination of resistors that works with all models. In Excel I try out regulating voltage for the microphone by using a voltage divider (R1, R2) and a current limiting resistor (R3).  A 20kΩ resistor is perfect, it is already in the mute portion of the circuit and brings drops the voltage into the 1.5V - 3.6V range
+Shure sells a few different lines of wireless systems. Each bodypack supplies the bias voltage slightly differently. Lets check if we can find a combination of resistors that works with all models. In Excel I try out regulating voltage for the microphone by using a voltage divider (R1, R2) and a current limiting resistor (R3).  A 20kΩ current limiting resistor ends up fitting in perfectly. It is already in the mute portion of the circuit and brings drops the voltage into the 1.5V - 3.6V range for the capsule.
 
+
+## Component Footprints
+KiCad libraries include footprints for thousands of devices, but they don't include everything. Using the Footprint Editor, we create new layouts for the microphone and switch.
 
 ![mems mechanical](img/mems_mech.jpg)
+The microphone datasheet includes mechanical specifications, a pinout, and solder stencil pattern. Using these measurements and some basic math, we add pads that correspond to contacts on the microphone. The footprint editor lets us add pads to different layers of the footprint.
+
+For the microphone, we define the footprint by these layers:
+* Copper - This is where we want there to be copper on the PCB.
+* Mask - This is where we want the copper to be exposed on the PCB.
+* Paste - Were we want there to be solder paste applied. This will be used to create a stencil.
+* Silkscreen - Labels, this will show up as white text on the PCB.
+* Drill - Where holes will be drilled. These are often used to connect between layers of the PCB. For the microphone, it is used to create an acoustic port.
+
+![component library](img/footprint.jpg)

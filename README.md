@@ -49,10 +49,10 @@ KiCad libraries include footprints for thousands of devices, but they don't incl
 The microphone datasheet includes mechanical specifications, a pinout, and solder stencil pattern. Using these measurements and some basic math, we add pads that correspond to contacts on the microphone. The footprint editor lets us add pads to different layers of the footprint.
 
 For the microphone, we define the footprint by these layers:
-* Copper - This is where we want there to be copper on the PCB.
-* Mask - This is where we want the copper to be exposed on the PCB.
-* Paste - Were we want there to be solder paste applied. This will be used to create a stencil.
-* Silkscreen - Labels, this will show up as white text on the PCB.
+* Copper - This is where we want copper.
+* Mask - This is where we want copper to be exposed.
+* Paste - Where we want solder paste to be applied. This will be used to create a stencil.
+* Silkscreen - This layer adds labels, polarity indicators, and other info to the PCB.
 * Drill - Where holes will be drilled. These are often used to connect between layers of the PCB. For the microphone, it is used to create an acoustic port.
 
 ![component library](img/footprint.jpg)

@@ -106,5 +106,5 @@ The hole for the switch and wire are manually drilled using a drill press and a 
 | TA4F Connector         | RT4FC-B        | Neutrik          | 1            | $2.80          | $2.80           |   |   |   |
 | Balanced Lav Mic Cable | W2901          | Mogami           | 6            | $0.67          | $4.02           |   |   |   |
 |                        |                |                  |              |                |                 |   |   |   |
-|                        |                |                  |              | **Total:**     | **$14.83 **     |   |   |   |
+|                        |                |                  |              | **Total:**     | $14.83          |   |   |   |
 |                        |                |                  |              |                |                 |   |   |   |

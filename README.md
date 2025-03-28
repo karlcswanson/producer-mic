@@ -65,6 +65,7 @@ For the microphone, we define the footprint by these layers:
 
 Additional custom footprints are created for the artwork on the front of the mic and the PTT button.
 
+
 ## PCB Layout
 ![pcb layout](img/pcb_layout.jpg)
 Each symbol in the PCB layout has a corresponding footprint. These footprints are added to the PCB. I know where I want the mic, switch and pads for the cable to go so those are placed first. From there, I place the rest of the components.
@@ -84,7 +85,26 @@ The KiCad file also gets uploaded to [OshStencil](https://www.oshstencils.com/).
 
 Time to solder it up! The stencil is placed over the PCB, and the paste is applied by spreading the paste across. The components are applied to the board using a set of precision tweezers. Placement does not need to be perfect, as the flux evaporates, the surface tension of the solder will kind of pull the components into place. It is very cool to see! The boards go onto the hotplate. As the paste heats up, it goes from a grayish color to a metallic silver. When everything is silver, the board is done and can be removed to cool down.
 
+
 ## Case Design and Construction
 ![outlines](img/outlines.R1.svg)
+The board outline is brought into Adobe Illustrator where the basic geometry of the enclosure can be worked out. I also created a model in AutoDesk Fusion360. My friend Dan, a skilled cabinetmaker, was able to cut a few prototypes out of scrap plastic material using an AVID cnc router. Once we had the fit right, it was cut out of wood.
+
+The hole for the switch and wire are manually drilled using a drill press and a magnet is glued to the inside of the case. The cable is fished in and soldered to the board. The board is glued in place. The mic is finished!
+
+
 
 ## BOM
+| **Description**        | **Model**      | **Manufacturer** | **Quantity** | **Price Each** | **Total Price** |   |   |   |
+|------------------------|----------------|------------------|--------------|----------------|-----------------|---|---|---|
+| 0.12uF 805 capacitor   | 08053C124JAT2A | KYOCERA AVX      | 1            | $0.24          | $0.24           |   |   |   |
+| 150pF 805 capacitor    | 08051A151J4T4A | KYOCERA AVX      | 1            | $0.16          | $0.16           |   |   |   |
+| MEMS microphone        | SPH6611LR5H-1  | Knowles          | 1            | $0.92          | $0.92           |   |   |   |
+| 20k 805 Resistor       | ERJ-6ENF2002V  | Panasonic        | 2            | $0.03          | $0.06           |   |   |   |
+| 100k 805 Resistor      | ERJ-6ENF1003V  | Panasonic        | 1            | $0.03          | $0.03           |   |   |   |
+| SPDT Switch            | G3B15AH-R-YA   | NKK              | 1            | $6.60          | $6.60           |   |   |   |
+| TA4F Connector         | RT4FC-B        | Neutrik          | 1            | $2.80          | $2.80           |   |   |   |
+| Balanced Lav Mic Cable | W2901          | Mogami           | 6            | $0.67          | $4.02           |   |   |   |
+|                        |                |                  |              |                |                 |   |   |   |
+|                        |                |                  |              | **Total:**     | **$14.83 **     |   |   |   |
+|                        |                |                  |              |                |                 |   |   |   |

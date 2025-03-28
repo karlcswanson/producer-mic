@@ -82,7 +82,7 @@ The KiCad file also gets uploaded to [OshStencil](https://www.oshstencils.com/).
 |-----------------------------|---------------------------------|
 | ![Hotplate](img/hotplate.jpg) | ![Batch of Finished PCBs](img/batch.jpg) |
 
-Time to solder it up! The stencil is placed over the PCB, and the paste is applied by spreading the paste across the stencil. The components are applied to the board using a set of precision tweezers. Placement does not need to be perfect, as the flux evaporates, the surface tension of the solder will kind of pull the components into place. It is very cool to see. The boards go onto the hotplate. As the paste heats up, it goes from a grayish color to a metallic silver. When everything is silver, the board is done and can be removed to cool down.
+Time to solder it up! The stencil is placed over the PCB, and the paste is applied by spreading the paste across. The components are applied to the board using a set of precision tweezers. Placement does not need to be perfect, as the flux evaporates, the surface tension of the solder will kind of pull the components into place. It is very cool to see! The boards go onto the hotplate. As the paste heats up, it goes from a grayish color to a metallic silver. When everything is silver, the board is done and can be removed to cool down.
 
 
 ## BOM

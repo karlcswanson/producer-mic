@@ -1,7 +1,11 @@
 # producer-mic
 ![mic picture](img/hero.jpg)
 
-This mic was created to work with Shure ULX-D and Axient Digital wireless systems. The venue was using a custom Countryman B3 mic wired into a PTT radio surveillance kit. While simple, this design was fragile, difficult to repair, and caused clicks when the mic was turned on and off.
+This mic was created to work with Shure ULX-D and Axient Digital wireless systems. Due to Prior to making this, the producer at the venue was using a custom Countryman B3 mic wired into a PTT radio surveillance kit. While simple, this design was fragile, difficult to repair, and caused pops when the mic was turned on and off. So I decided to make a microphone that was difficult to repair but at least did not pop when it turned on and off.
+
+## Design
+![design pattern](img/design_inspo.jpg)
+I was looking at different triangle based patterns to put on the front of the mic. Could not get them to fit right. A few weeks later I found the perfect art deco pattern. This was found above the main entrance to the Town of Lake Water Tower and Municipal Building in Milwaukee Wisconsin.
 
 ## Circuit Design
 ![shure mute diagram](img/mute_20switch.gif)
@@ -59,7 +63,16 @@ For the microphone, we define the footprint by these layers:
 
 ![component library](img/footprint.jpg)
 
+Additional custom footprints are created for the artwork on the front of the mic and the PTT button.
+
 ## PCB Layout
+![pcb layout](img/pcb_layout.jpg)
+Each symbol in the PCB layout has a corresponding footprint. These footprints are added to the PCB. I know where I want the mic, switch and pads for the cable to go so those are placed first. From there, I place the rest of the components.
+
+After everything is placed, the nets are turned into routes. I use the Route tool draw a path between pads of different components. Ground is done last, for that I use a pour to fill in the rest of the space with ground.
+
 ## Fabrication
 
 ## Physical Design
+
+## BOM

@@ -1,7 +1,7 @@
 # producer-mic
 ![mic picture](img/hero.jpg)
 
-This mic was created to work with Shure ULX-D and Axient Digital wireless systems. Due to Prior to making this, the producer at the venue was using a custom Countryman B3 mic wired into a PTT radio surveillance kit. While simple, this design was fragile, difficult to repair, and caused pops when the mic was turned on and off. So I decided to make a microphone that was difficult to repair but at least did not pop when it turned on and off.
+This mic was created to work with Shure ULX-D and Axient Digital wireless systems. Prior to making this, producers at the venue was used a custom Countryman B3 mic wired into a PTT radio surveillance kit. While simple, this design was fragile, difficult to repair, and caused pops when the mic was turned on and off. So I decided to make a microphone that was difficult to repair but at least did not pop when it turned on and off.
 
 ## Design
 ![design pattern](img/design_inspo.jpg)
@@ -72,7 +72,17 @@ Each symbol in the PCB layout has a corresponding footprint. These footprints ar
 After everything is placed, the nets are turned into routes. I use the Route tool draw a path between pads of different components. Ground is done last, for that I use a pour to fill in the rest of the space with ground.
 
 ## Fabrication
+![kicad layers](img/pcb_layers.jpg)
+The KiCad file goes off to [OshPark](https://oshpark.com) to be fabricated. OshPark makes a panel that includes the producer-mic pcb along with pcbs from dozens of other customers. They make it very easy and affordable to run small prototypes, this board cost $1.70!
 
-## Physical Design
+The KiCad file also gets uploaded to [OshStencil](https://www.oshstencils.com/). They'll etch a stainless steel solder paste stencil using the paste layer we defined earlier.
+
+
+| ![Stencil](img/stencil.jpg) | ![Paste Applied](img/paste.jpg) |
+|-----------------------------|---------------------------------|
+| ![Hotplate](img/hotplate.jpg) | ![Batch of Finished PCBs](img/batch.jpg) |
+
+Time to solder it up! The stencil is placed over the PCB, and the paste is applied by spreading the paste across the stencil. The components are applied to the board using a set of precision tweezers. Placement does not need to be perfect, as the flux evaporates, the surface tension of the solder will kind of pull the components into place. It is very cool to see. The boards go onto the hotplate. As the paste heats up, it goes from a grayish color to a metallic silver. When everything is silver, the board is done and can be removed to cool down.
+
 
 ## BOM

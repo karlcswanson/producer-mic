@@ -1,5 +1,5 @@
 # producer-mic
-![mic picture](img/hero.jpg)
+![picture of producer-mic](img/hero.jpg)
 
 This mic was created to meet a unique need for a push-to-talk mic for Shure wireless systems. In a live environment with high standards and attention to detail, they did not want the Executive Producer stand out with a comm headset and pack. They opted to go with a more covert IFB based solution.
 
@@ -11,7 +11,7 @@ Below you will find a project design and build log. This repo contains design as
 
 
 ## Circuit Design
-![shure mute diagram](img/mute_20switch.gif)
+![shure mute switch diagram](img/mute_20switch.gif)
 
 Shure sells inline mute switches, these are often used by NFL Refs to talk to America. A schematic is posted in their knowledge base. The additional caps and resistors in this circuit help clean up small voltage spikes when the switch changes state.
 
@@ -21,17 +21,17 @@ The B3 capsule in the previous iteration of the mic is expensive, especially whe
 ![mic on a lego stud](img/lego.jpg)
 Yes, that is a microphone on a lego stud! This is a Knowles SPH6611LR5H-1 MEMS microphone. This $0.92 component is constructed using processes similar to how microprocessors are made. The diaphragm and amplifier are etched out of silicon. This particular component is bottom ported, the audio passes through the bottom of the PCB into the microphone.
 
-![bottom port](img/mems.jpg)
+![side view of microphone component](img/mems.jpg)
 
 ### Switch
-For a Push-To-Talk, the switch needs to be normally be closed. Pressing the button needs to open the switch to un-mute the mic. A SPST NC or SPDT switch is required. The NKK G3B15AH-R-YA was selected, it is a SMT right angle switch. Its a bit larger than I'd like but there are not as many options for SPDT right angle SMT switches.
+For a Push-To-Talk, the switch needs to be normally closed. Pressing the button opens the switch to un-mute. A SPST NC or SPDT switch is required. The NKK G3B15AH-R-YA was selected, it is a SMT right angle switch. Its a bit larger than I'd like but there are not as many options for SPDT right angle SMT switches.
 
 ## Schematic
-![schematic](img/schematic.jpg)
+![producer-mic schematic](img/schematic.jpg)
 
 I start by recreating the schematic for the Shure mute switch in [KiCad](https://www.kicad.org). There is one additional resistor to add. The microphone runs at 1.5V - 3.6V. We need to reduce the 5V DC bias from the bodypack into to that range.
 
-![bodypack input](img/bodypack.jpg)
+![bodypack input bias circuits](img/bodypack.jpg)
 
 
 |           |           |             |            |         |               |
@@ -48,13 +48,13 @@ I start by recreating the schematic for the Shure mute switch in [KiCad](https:/
 | QLXD      | 1000 Ω    | 2.105 V     | 0.00026316 |         | 1.955 V       |
 | UHFR      | 500 Ω     | 2.162 V     | 0.00027027 |         | 2.0275 V      |
 
-Shure sells a few different lines of wireless systems. Each system has a slightly different bias circuit. Lets check if we can find a combination of resistors that works with all models. In Excel, I prototype regulating the voltage using a voltage divider (R1, R2) and a current limiting resistor (R3).  A 20kΩ current limiting resistor ends up fitting in perfectly. Its already used in the mute circuit and drops the voltage into the range of the capsule.
+Shure sells a few different lines of wireless systems. Each system has a slightly different bias circuit. Lets check if we can find a combination of resistors that works with all models. In Excel, I prototype regulating the voltage using a voltage divider (R1, R2) and a current limiting resistor (R3).  A 20kΩ current limiting resistor ends up fitting in perfectly. Its already used in the mute circuit and drops the voltage within the range required by the microphone.
 
 
 ## Component Footprints
 KiCad includes footprints for many devices, but not all. Using the Footprint Editor, we create new layouts for the microphone and switch.
 
-![mems mechanical](img/mems_mech.jpg)
+![microphone mechanical specifications](img/mems_mech.jpg)
 The microphone datasheet includes mechanical specifications, a pinout, and solder stencil pattern. Using these measurements and some basic math, we add pads that correspond to contacts on the microphone. The footprint editor lets us add pads to different layers of the footprint.
 
 For the microphone, we define the footprint by these layers:
@@ -64,7 +64,7 @@ For the microphone, we define the footprint by these layers:
 * Silkscreen - This layer adds labels, polarity indicators, and other info to the PCB.
 * Drill - Where holes will be drilled. These are often used to connect between layers of the PCB. For the microphone, its also used to create an acoustic port.
 
-![component library](img/footprint.jpg)
+![creating a footprint in KiCad](img/footprint.jpg)
 
 Additional custom footprints are created for the artwork on the front of the mic and the PTT button.
 
@@ -79,7 +79,7 @@ Each symbol in the PCB layout has a corresponding footprint. These footprints ar
 After everything is placed, the nets are turned into routes. I use the Route tool draw a path between pads of different components. Ground is done last, for that I use a pour to fill in the rest of the space with ground.
 
 ## Fabrication
-![kicad layers](img/pcb_layers.jpg)
+![A breakdown of different layers used to create PCB](img/pcb_layers.jpg)
 The KiCad file goes off to [OshPark](https://oshpark.com) to be fabricated. OshPark makes a panel that includes the producer-mic pcb along with pcbs from dozens of other customers. They make it very easy and affordable to run small prototypes, this board cost $1.70!
 
 The KiCad file also gets uploaded to [OshStencil](https://www.oshstencils.com/). They'll etch a stainless steel solder paste stencil using the paste layer we defined earlier.
@@ -93,9 +93,11 @@ Time to solder it up! The stencil is placed over the PCB, and the paste is appli
 
 
 ## Case Design and Construction
-![outlines](img/outlines.R1.svg)
+![laying out the case design in Adobe Illustrator](img/outlines.R1.svg)
 
 The board outline was brought into Adobe Illustrator to work out the case geometry. I also created a model in AutoDesk Fusion360. My friend Dan, a skilled cabinetmaker, was able to cut a few prototypes out of scrap plastic material using a cnc router. Once we had the fit right, it was cut out of wood.
+
+![prototype enclosures](img/case_prototype.jpg)
 
 The hole for the switch and wire are manually drilled and a magnet is glued to the inside of the case. The cable is fished in and soldered to the board. The board is glued in place. The mic is finished!
 

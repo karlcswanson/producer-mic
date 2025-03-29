@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "mic switch-cache")(type "Legacy")(uri "/Users/karl/Dropbox/brainstorm/Projects/Current Projects/mic_switch/mic switch/mic switch-cache.lib")(options "")(descr ""))
+  (lib (name "mic_switch_symbols")(type "Legacy")(uri "/Users/karl/Dropbox/brainstorm/Projects/Current Projects/mic_switch/mic switch/mic_switch_symbols.lib")(options "")(descr ""))
+  (lib (name "mic switch-rescue")(type "KiCad")(uri "${KIPRJMOD}/mic switch-rescue.kicad_sym")(options "")(descr ""))
+)

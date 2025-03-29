@@ -1,7 +1,7 @@
 # producer-mic
 ![mic picture](img/hero.jpg)
 
-This mic was created to meet a unique need for a push-to-talk mic for Shure wireless systems. In a production environment with high standards and attention to detail, they did not want the Executive Producer stand out with a comm headset and pack. They opted to go with a more covert IFB based solution.
+This mic was created to meet a unique need for a push-to-talk mic for Shure wireless systems. In a live environment with high standards and attention to detail, they did not want the Executive Producer stand out with a comm headset and pack. They opted to go with a more covert IFB based solution.
 
 For many years, a custom Countryman B3 filled this need. It was wired into two way radio surveillance kit. While simple, this design was fragile, difficult to repair, and caused pops when the mic was turned on and off. So I decided to make a microphone that was difficult to repair but at least did not pop when it turned on and off.
 

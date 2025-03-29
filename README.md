@@ -1,13 +1,13 @@
 # producer-mic
 ![mic picture](img/hero.jpg)
 
-This mic was created to meet a unique need for a push-to-talk mic for Shure wireless systems. In a production environment with high standards and attention to detail, they did not want the Executive Producer stand out with a comm headset and FreeSpeak II pack. They opted to go with a more covert IFB based solution.
+This mic was created to meet a unique need for a push-to-talk mic for Shure wireless systems. In a production environment with high standards and attention to detail, they did not want the Executive Producer stand out with a comm headset and pack. They opted to go with a more covert IFB based solution.
 
-For many years, a custom Countryman B3 filled this need. It was wired into two way radio surveillance kit. While simple, this design was fragile, difficult to repair, and caused pops when the mic was turned on and off. So I decided to make a microphone that was difficult to repair but at least did not pop when it turned on and off!
+For many years, a custom Countryman B3 filled this need. It was wired into two way radio surveillance kit. While simple, this design was fragile, difficult to repair, and caused pops when the mic was turned on and off. So I decided to make a microphone that was difficult to repair but at least did not pop when it turned on and off.
 
 This tiny mic attaches to a sleeve using a magnet. Users are intelligible in loud production environments. The project was an overall success!
 
-Below you will find a project design and build log. The repo contains design assets, schematics, board, and footprint libraries.
+Below you will find a project design and build log. This repo contains design assets, schematics, board, and footprint libraries.
 
 
 ## Circuit Design
@@ -19,36 +19,36 @@ The B3 capsule in the previous iteration of the mic is expensive, especially whe
 
 ### Microphone
 ![mic on a lego stud](img/lego.jpg)
-Yes, that is a microphone on a lego stud! This is a Knowles SPH6611LR5H-1. This $0.92 component is constructed using processes similar to how other microprocessors are made. The diaphragm and amplifier are etched out of silicon. This particular component is bottom ported, the audio passes through the bottom of the PCB into the microphone.
+Yes, that is a microphone on a lego stud! This is a Knowles SPH6611LR5H-1. This $0.92 component is constructed using processes similar to how microprocessors are made. The diaphragm and amplifier are etched out of silicon. This particular component is bottom ported, the audio passes through the bottom of the PCB into the microphone.
 
 ![bottom port](img/mems.jpg)
 
 ### Switch
-For a Push-To-Talk, the switch needs normally be closed to mute the audio. Pressing the button should enable the mic. A SPST NC or SPDT switch is required. The NKK G3B15AH-R-YA was selected, it is a SMT right angle switch. Its a bit larger than I'd like but there are not as many options for SPDT right angle SMT switches.
+For a Push-To-Talk, the switch needs normally be closed to mute the audio. Pressing the button needs to open the switch to un-mute the mic. A SPST NC or SPDT switch is required. The NKK G3B15AH-R-YA was selected, it is a SMT right angle switch. Its a bit larger than I'd like but there are not as many options for SPDT right angle SMT switches.
 
 ## Schematic
 ![schematic](img/schematic.jpg)
 
-I start by recreating the schematic for the Shure mute switch in [KiCad](https://www.kicad.org). There is one additional resistor to add. The microphone runs at 1.5V - 3.6V. We need to drop the 5V DC bias from the body back to that range.
+I start by recreating the schematic for the Shure mute switch in [KiCad](https://www.kicad.org). There is one additional resistor to add. The microphone runs at 1.5V - 3.6V. We need to reduce the 5V DC bias from the bodypack into to that range.
 
 ![bodypack input](img/bodypack.jpg)
 
 
-|           |           |             |            |         |               |    |         |   |
-|-----------|-----------|-------------|------------|---------|---------------|----|---------|---|
-| Vin       | 5 V       |             |            |         |               |    |         |   |
-| Vmin      | 1.5 V     |             | R1         | 10000 Ω |               |    |         |   |
-| Vmax      | 3.6 V     |             | R2         | 8000 Ω  |               | R3 | 20000 Ω |   |
-| Idd@1.8 V | 0.000145A |             |            |         |               |    |         |   |
-|           |           |             |            |         |               |    |         |   |
-|           |           | Voltage Div |            |         | Current Limit |    |         |   |
-|           | RbodyPack | Vout        | Idiv       |         | Vout          |    |         |   |
-| ATXD      | 0         | 2.222 V     | 0.00027778 |         | 2.1 V         |    |         |   |
-| ULXD      | 1000 Ω    | 2.105 V     | 0.00026316 |         | 1.955 V       |    |         |   |
-| QLXD      | 1000 Ω    | 2.105 V     | 0.00026316 |         | 1.955 V       |    |         |   |
-| UHFR      | 500 Ω     | 2.162 V     | 0.00027027 |         | 2.0275 V      |    |         |   |
+|           |           |             |            |         |               |
+|-----------|-----------|-------------|------------|---------|---------------|
+| Vin       | 5 V       |             | R1         | 10000 Ω |               |
+| Vmin      | 1.5 V     |             | R2         | 8000 Ω  |               |
+| Vmax      | 3.6 V     |             | R3         | 20000 Ω |               |
+| Idd@1.8 V | 0.000145A |             |            |         |               |
+|           |           |             |            |         |               |
+|           |           | Voltage Div |            |         | Current Limit |
+|           | RbodyPack | Vout        | Idiv       |         | Vout          |
+| ATXD      | 0         | 2.222 V     | 0.00027778 |         | 2.1 V         |
+| ULXD      | 1000 Ω    | 2.105 V     | 0.00026316 |         | 1.955 V       |
+| QLXD      | 1000 Ω    | 2.105 V     | 0.00026316 |         | 1.955 V       |
+| UHFR      | 500 Ω     | 2.162 V     | 0.00027027 |         | 2.0275 V      |
 
-Shure sells a few different lines of wireless systems. Each bodypack supplies the bias voltage slightly differently. Lets check if we can find a combination of resistors that works with all models. In Excel, I prototype regulating the voltage using a voltage divider (R1, R2) and a current limiting resistor (R3).  A 20kΩ current limiting resistor ends up fitting in perfectly. Its already used in the mute circuit and drops the voltage into the range of the capsule.
+Shure sells a few different lines of wireless systems. Each system has a slightly different bias circuit. Lets check if we can find a combination of resistors that works with all models. In Excel, I prototype regulating the voltage using a voltage divider (R1, R2) and a current limiting resistor (R3).  A 20kΩ current limiting resistor ends up fitting in perfectly. Its already used in the mute circuit and drops the voltage into the range of the capsule.
 
 
 ## Component Footprints
@@ -70,14 +70,13 @@ Additional custom footprints are created for the artwork on the front of the mic
 
 ## Design
 ![design pattern](img/design_inspo.jpg)
-I was looking at different triangle based patterns to put on the front of the mic. Could not get them to fit right. A few weeks later I found the perfect art deco pattern. This was found above the main entrance to the Town of Lake Water Tower and Municipal Building in Milwaukee Wisconsin.
+I was looking at different triangle based patterns to put on the front of the mic. Could not get them to fit right. A few weeks later I found the perfect art deco pattern while on an architectural tour. This was found at the Town of Lake Water Tower and Municipal Building in Milwaukee Wisconsin.
 
 ## PCB Layout
 ![pcb layout](img/pcb_layout.jpg)
 Each symbol in the PCB layout has a corresponding footprint. These footprints are added to the PCB. I know where I want the mic, switch and pads for the cable to go so those are placed first. From there, I place the rest of the components.
 
 After everything is placed, the nets are turned into routes. I use the Route tool draw a path between pads of different components. Ground is done last, for that I use a pour to fill in the rest of the space with ground.
-
 
 ## Fabrication
 ![kicad layers](img/pcb_layers.jpg)
@@ -96,9 +95,9 @@ Time to solder it up! The stencil is placed over the PCB, and the paste is appli
 ## Case Design and Construction
 ![outlines](img/outlines.R1.svg)
 
-The board outline was brought into Adobe Illustrator to work out the geometry of the enclosure. I also created a model in AutoDesk Fusion360. My friend Dan, a skilled cabinetmaker, was able to cut a few prototypes out of scrap plastic material using an AVID cnc router. Once we had the fit right, it was cut out of wood.
+The board outline was brought into Adobe Illustrator to work out the case geometry. I also created a model in AutoDesk Fusion360. My friend Dan, a skilled cabinetmaker, was able to cut a few prototypes out of scrap plastic material using a cnc router. Once we had the fit right, it was cut out of wood.
 
-The hole for the switch and wire are manually drilled using a drill press and a magnet is glued to the inside of the case. The cable is fished in and soldered to the board. The board is glued in place. The mic is finished!
+The hole for the switch and wire are manually drilled and a magnet is glued to the inside of the case. The cable is fished in and soldered to the board. The board is glued in place. The mic is finished!
 
 The mic worked well during its initial testing, but there was a bit of wind noise. I tried out a lav sized deadcat. There was a bit of improvement, but it didn't make up for the weird texture. I ended up going with a small piece of open cell foam that was locally sourced from the lid of my Pelican case. That seemed to resolve the issue.
 

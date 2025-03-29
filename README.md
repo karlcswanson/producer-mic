@@ -19,12 +19,12 @@ The B3 capsule in the previous iteration of the mic is expensive, especially whe
 
 ### Microphone
 ![mic on a lego stud](img/lego.jpg)
-Yes, that is a microphone on a lego stud! This is a Knowles SPH6611LR5H-1. This $0.92 component is constructed using processes similar to how microprocessors are made. The diaphragm and amplifier are etched out of silicon. This particular component is bottom ported, the audio passes through the bottom of the PCB into the microphone.
+Yes, that is a microphone on a lego stud! This is a Knowles SPH6611LR5H-1 MEMS microphone. This $0.92 component is constructed using processes similar to how microprocessors are made. The diaphragm and amplifier are etched out of silicon. This particular component is bottom ported, the audio passes through the bottom of the PCB into the microphone.
 
 ![bottom port](img/mems.jpg)
 
 ### Switch
-For a Push-To-Talk, the switch needs normally be closed to mute the audio. Pressing the button needs to open the switch to un-mute the mic. A SPST NC or SPDT switch is required. The NKK G3B15AH-R-YA was selected, it is a SMT right angle switch. Its a bit larger than I'd like but there are not as many options for SPDT right angle SMT switches.
+For a Push-To-Talk, the switch needs to be normally be closed. Pressing the button needs to open the switch to un-mute the mic. A SPST NC or SPDT switch is required. The NKK G3B15AH-R-YA was selected, it is a SMT right angle switch. Its a bit larger than I'd like but there are not as many options for SPDT right angle SMT switches.
 
 ## Schematic
 ![schematic](img/schematic.jpg)
